@@ -1,27 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>政党詳細ページ</title>
-  <script src="party.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
-      const party = parties[id];
-      if (party) {
-        document.getElementById("party-name").textContent = party.name;
-        document.getElementById("party-catchphrase").textContent = party.catchphrase;
-        document.getElementById("party-summary").textContent = party.summary;
-      } else {
-        document.getElementById("party-name").textContent = "政党情報がありません";
-      }
-    });
-  </script>
-</head>
-<body>
-  <h1 id="party-name"></h1>
-  <h2 id="party-catchphrase"></h2>
-  <p id="party-summary"></p>
-</body>
-</html>
+<script src="party.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const party = parties[id];
+
+    if (party) {
+      document.getElementById("party-name").textContent = party.name;
+      document.getElementById("party-catchphrase").textContent = party.catchphrase;
+      document.getElementById("party-summary").textContent = party.summary;
+    } else {
+      document.getElementById("party-name").textContent = "政党情報がありません";
+    }
+  });
+</script>
