@@ -1,16 +1,41 @@
-<script src="party.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    const party = parties[id];
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>政党詳細ページ</title>
+  <script src="party.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const party = parties[id];
 
-    if (party) {
-      document.getElementById("party-name").textContent = party.name;
-      document.getElementById("party-catchphrase").textContent = party.catchphrase;
-      document.getElementById("party-summary").textContent = party.summary;
-    } else {
-      document.getElementById("party-name").textContent = "政党情報がありません";
-    }
-  });
-</script>
+      const nameEl = document.getElementById("party-name");
+      const catchEl = document.getElementById("party-catchphrase");
+      const summaryEl = document.getElementById("party-summary");
+
+      if (party) {
+        nameEl.textContent = party.name;
+        catchEl.textContent = party.catchphrase;
+        summaryEl.textContent = party.summary;
+      } else {
+        nameEl.textContent = "政党情報がありません";
+        catchEl.textContent = "";
+        summaryEl.textContent = "";
+      }
+    });
+  </script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    h1 { color: #333; }
+    h2 { color: #666; }
+    a { display: inline-block; margin-top: 20px; text-decoration: none; color: #007BFF; }
+  </style>
+</head>
+<body>
+  <h1 id="party-name"></h1>
+  <h2 id="party-catchphrase"></h2>
+  <p id="party-summary"></p>
+  <a href="index.html">トップページに戻る</a>
+</body>
+</html>
